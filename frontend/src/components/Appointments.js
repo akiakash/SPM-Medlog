@@ -9,8 +9,7 @@ import Typography from "@mui/material/Typography";
 export default function Appointments() {
   return (
     <div>
-      <div
-        className="Card"
+      <Card
         style={{
           width: "80%",
           marginLeft: "10%",
@@ -21,7 +20,7 @@ export default function Appointments() {
         <h1 style={{ marginLeft: "50px", marginTop: "20px" }}>
           Welcome To My Bookings
         </h1>
-      </div>
+      </Card>
       <div style={{ marginLeft: "4%", paddingTop: "40px" }}>
         <input
           placeholder="Enter Post Title"

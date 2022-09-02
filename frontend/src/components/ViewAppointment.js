@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import { Card } from "@mui/material";
 
 function ViewAppointment() {
   return (
     <div>
-      <div
+      <Card
         className="Card"
         style={{
           width: "60%",
@@ -83,7 +84,7 @@ function ViewAppointment() {
             Delete Doctor
           </Button>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }
