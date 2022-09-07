@@ -94,6 +94,7 @@ const SignInSide = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+
             <Button
               type="submit"
               fullWidth
@@ -103,6 +104,9 @@ const SignInSide = () => {
             >
               Sign In
             </Button>
+            <a href="/appointments">
+              <h1>navigate</h1>{" "}
+            </a>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

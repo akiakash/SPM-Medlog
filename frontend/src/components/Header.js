@@ -61,8 +61,11 @@ const ResponsiveAppBar = () => {
   return (
     <AppBar
       elevation={0}
-      position="static"
-      style={{ backgroundColor: "transparent", fontFamily: "Poppins" }}
+      position="fixed"
+      style={{
+        backgroundColor: "white",
+        fontFamily: "Poppins",
+      }}
     >
       <Container maxWidth="xl" style={{ fontFamily: "Poppins" }}>
         <Toolbar disableGutters>
@@ -73,12 +76,12 @@ const ResponsiveAppBar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             <a href="/home">
-              <img src="./EDUvation.png"></img>
+              <img src="./Logo.png"></img>
             </a>
           </Typography>
 
           <Box
-            style={{ fontFamily: "Poppins" }}
+            style={{ fontFamily: "Poppins", color: "#307172" }}
             sx={{
               flexGrow: 1,
               display: { xs: "flex", md: "none" },
@@ -136,21 +139,21 @@ const ResponsiveAppBar = () => {
           >
             <Button
               onClick={home}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Home
             </Button>
             <Button
               onClick={about}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               About
             </Button>
             <Button
               onClick={services}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Services
@@ -158,21 +161,21 @@ const ResponsiveAppBar = () => {
 
             <Button
               onClick={doctors}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Doctors
             </Button>
             <Button
               onClick={contactus}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Contact Us
             </Button>
             <Button
               onClick={appointments}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Appointments
@@ -180,7 +183,7 @@ const ResponsiveAppBar = () => {
 
             <Button
               onClick={Login}
-              sx={{ my: 2, color: "black" }}
+              sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Login

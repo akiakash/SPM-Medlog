@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Header from "./Header";
 
-export default function Appointments() {
+export default function Doctors() {
   return (
     <div>
       <Header />
@@ -35,7 +35,7 @@ export default function Appointments() {
             <h2
               style={{ color: "white", textAlign: "left", marginLeft: "200px" }}
             >
-              Appointments
+              Medilog
             </h2>
           </div>
           <div className="column">
@@ -62,8 +62,12 @@ export default function Appointments() {
       {/* <a href="/adddoctor">
         <Button size="small">Your</Button>{" "}
       </a> */}
+      <h1>Our Doctors</h1>
       <div>
-        <Card sx={{ maxWidth: 345 }} style={{ marginLeft: "100px" }}>
+        <Card
+          sx={{ maxWidth: 345 }}
+          style={{ marginLeft: "100px", paddingTop: "20px" }}
+        >
           <CardMedia
             component="img"
             height="140"
@@ -80,7 +84,7 @@ export default function Appointments() {
             </Typography>
           </CardContent>
           <CardActions>
-            <a href="/editappointment">
+            <a href="/viewappointment">
               <Button size="small">View</Button>{" "}
             </a>
           </CardActions>
