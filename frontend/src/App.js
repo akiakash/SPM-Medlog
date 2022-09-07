@@ -11,6 +11,7 @@ import EditAppointments from "./components/EditAppointment";
 import Doctors from "./components/Doctors";
 import SignUp from "./components/SignUpSide";
 import { useLocation } from "react-router-dom";
+import Home from "./components/Home";
 
 function App() {
   const NavBar = () => {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/editappointment" element={<EditAppointments />} />
           <Route path="/doctors" element={<Doctors />} />
+          <Route path="/home" element={<Home />} />
 
           {/* <Route path="/viewappointment" element={<ViewAppointment />} /> */}
         </Routes>
