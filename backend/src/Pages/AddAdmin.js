@@ -1,9 +1,53 @@
 import { Card } from "@material-ui/core";
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header";
+import axios from "axios";
 
 function AddAdmin() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
+  const [number, setNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [image, setImage] = useState("");
+
+  const CreateUSer = (e) => {
+    axios
+      .post("http://localhost:5000/adminmanagement/signup", {
+        Name: name,
+        Email: email,
+        PhoneNumber: number,
+        Age: age,
+        Password: password,
+        Image: image,
+        Role: role,
+        DOB: dob,
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.location.reload();
+        e.preventDefault();
+        setName("");
+        setNumber("");
+        setAge("");
+        setPassword("");
+        setImage("");
+        setEmail("");
+        setRole("");
+        setDob("");
+
+        alert("Successfully Registered");
+
+        // Window.location.reload(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Header />
@@ -63,38 +107,74 @@ function AddAdmin() {
             <label for="formFile" class="form-label">
               Add Admin Image
             </label>
-            <input class="form-control" type="file" id="formFile" />
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              onChange={(e) => setImage(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Admin Name</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Email</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Role</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setRole(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setAge(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Date of Birth</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setDob(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setNumber(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Password</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
-          <Button style={{ backgroundColor: "#307172", color: "white" }}>
+          <Button
+            style={{ backgroundColor: "#307172", color: "white" }}
+            onClick={(e) => CreateUSer(e)}
+          >
             Add
           </Button>
         </form>

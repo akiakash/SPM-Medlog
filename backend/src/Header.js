@@ -37,10 +37,10 @@ const ResponsiveAppBar = () => {
     window.location = "/viewdoctors";
   };
   const addadmins = () => {
-    window.location = "/addadmins";
+    window.location = "/addadmin";
   };
   const viewadmins = () => {
-    window.location = "/viewadmins";
+    window.location = "/viewadmin";
   };
   const contactus = () => {
     window.location = "/contactus";
