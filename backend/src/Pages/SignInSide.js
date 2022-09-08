@@ -134,9 +134,6 @@ const SignInSide = () => {
             >
               Sign In
             </Button>
-            <a href="/appointments">
-              <h1>navigate</h1>{" "}
-            </a>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
