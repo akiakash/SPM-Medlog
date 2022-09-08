@@ -29,6 +29,7 @@ function App() {
           <Route path="/editappointment" element={<EditAppointments />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/addappointments" element={<AddAppointments />} />
 
           {/* <Route path="/viewappointment" element={<ViewAppointment />} /> */}
         </Routes>

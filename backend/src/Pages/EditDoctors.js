@@ -1,9 +1,59 @@
 import { Card } from "@material-ui/core";
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header";
+import axios from "axios";
 
 function EditDoctor() {
+  const [name, setName] = useState("");
+  const [specialization, setSpecialization] = useState("");
+  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
+  const [number, setNumber] = useState("");
+  const [bio, setBio] = useState("");
+  const [image, setImage] = useState("");
+
+  const [doctor, setDoctor] = useState([]);
+
+  const id = window.sessionStorage.getItem("doctorId");
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/doctormanagement/${id}`)
+      .then((response) => {
+        //   console.log(response.data);
+        setName(response.data.DoctorName);
+        setSpecialization(response.data.Specialization);
+        setAge(response.data.Age);
+        setDob(response.DOB);
+        setNumber(response.PhoneNumber);
+        setBio(response.Bio);
+        setImage(response.Image);
+
+        setDoctor(response.data);
+        console.log(response.data);
+      });
+  }, []);
+
+  function updateDoctor() {
+    axios
+      .patch(`http://localhost:5000/doctormanagement/${id}`, {
+        DoctorName: name,
+        Specialization: specialization,
+        Age: age,
+        DOB: dob,
+        PhoneNumber: number,
+        Bio: bio,
+        image: Image,
+      })
+      .then((response) => {
+        window.location.reload();
+        alert("successfull updated");
+      })
+      .catch((error) => {
+        alert("Sorry, Something Error...");
+      });
+  }
+
   return (
     <div>
       <Header />
@@ -63,27 +113,58 @@ function EditDoctor() {
             <label for="formFile" class="form-label">
               Add Doctor Image
             </label>
-            <input class="form-control" type="file" id="formFile" />
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              onChange={(e) => setImage(e.target.value)}
+              defaultValue={doctor.Image}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Doctor Name</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setName(e.target.value)}
+              defaultValue={doctor.DoctorName}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Specialization</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setSpecialization(e.target.value)}
+              defaultValue={doctor.Specialization}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setAge(e.target.value)}
+              defaultValue={doctor.Age}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Date of birth</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setDob(e.target.value)}
+              defaultValue={doctor.DOB}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number </label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setNumber(e.target.value)}
+              defaultValue={doctor.PhoneNumber}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Bio</label>
@@ -91,19 +172,15 @@ function EditDoctor() {
               class="form-control"
               id="exampleFormControlInput1"
               style={{ height: "100px" }}
+              onChange={(e) => setBio(e.target.value)}
+              defaultValue={doctor.Bio}
             />
           </div>
-          <Button style={{ backgroundColor: "#307172", color: "white" }}>
-            Update
-          </Button>
           <Button
-            style={{
-              backgroundColor: "#307172",
-              color: "white",
-              marginLeft: "10px",
-            }}
+            style={{ backgroundColor: "#307172", color: "white" }}
+            onClick={updateDoctor}
           >
-            Delete
+            Update
           </Button>
         </form>
       </Card>

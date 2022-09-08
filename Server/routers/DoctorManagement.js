@@ -50,5 +50,26 @@ router.delete("/:doctorid", async (req, res) => {
   }
 });
 
+router.patch("/:doctorid", async (req, res) => {
+  try {
+    const updatedDoctor = await Doctor.updateOne(
+      { _id: req.params.doctorid },
+      {
+        $set: {
+          DoctorName: req.body.DoctorName,
+          Specialization: req.body.Specialization,
+          Age: req.body.Age,
+          DOB: req.body.DOB,
+          PhoneNumber: req.body.PhoneNumber,
+          Bio: req.body.Bio,
+          Image: req.body.Image,
+        },
+      }
+    );
+    res.json(updatedDoctor);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 module.exports = router;
-7;

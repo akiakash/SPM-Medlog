@@ -1,9 +1,59 @@
 import { Card } from "@material-ui/core";
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
+import axios from "axios";
 
 function EditAppointments() {
+  const [name, setName] = useState("");
+  const [patientname, setPatientname] = useState("");
+  const [age, setAge] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [number, setNumber] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [appoinment, setAppointment] = useState([]);
+  const id = window.sessionStorage.getItem("appointmentId");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/appointmentmanagement/${id}`)
+      .then((response) => {
+        //   console.log(response.data);
+        setName(response.data.DoctorName);
+        setPatientname(response.data.PatientName);
+        setAge(response.data.Age);
+        setDate(response.Date);
+        setTime(response.Time);
+        setNumber(response.PhoneNumber);
+        setDescription(response.Description);
+
+        setAppointment(response.data);
+        console.log(response.data);
+      });
+  }, []);
+
+  function updateAppointment() {
+    axios
+      .patch(`http://localhost:5000/appointmentmanagement/${id}`, {
+        DoctorName: name,
+        PatientName: patientname,
+        Age: age,
+        Date: date,
+        Time: time,
+        PhoneNumber: number,
+        Description: description,
+      })
+      .then((response) => {
+        window.location.reload();
+        alert("successfull updated");
+      })
+      .catch((error) => {
+        alert("Sorry, Something Error...");
+      });
+  }
+
   return (
     <div>
       <Header />
@@ -61,23 +111,48 @@ function EditAppointments() {
         <form>
           <div class="form-group">
             <label for="exampleFormControlInput1">Doctor Name</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setName(e.target.value)}
+              defaultValue={appoinment.DoctorName}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Patient Name</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setPatientname(e.target.value)}
+              defaultValue={appoinment.PatientName}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Mobile Number</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setNumber(e.target.value)}
+              defaultValue={appoinment.PhoneNumber}
+            />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Place</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <label for="exampleFormControlInput1">Date</label>
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setDate(e.target.value)}
+              defaultValue={appoinment.Date}
+            />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Date & Time</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <label for="exampleFormControlInput1">Time</label>
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              onChange={(e) => setTime(e.target.value)}
+              defaultValue={appoinment.Time}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Description</label>
@@ -85,6 +160,8 @@ function EditAppointments() {
               class="form-control"
               id="exampleFormControlInput1"
               style={{ height: "100px" }}
+              onChange={(e) => setDescription(e.target.value)}
+              defaultValue={appoinment.Description}
             />
           </div>
           <Button
@@ -93,11 +170,9 @@ function EditAppointments() {
               color: "white",
               marginRight: "20px",
             }}
+            onClick={updateAppointment}
           >
             Update
-          </Button>
-          <Button style={{ backgroundColor: "#307172", color: "white" }}>
-            Delete
           </Button>
         </form>
       </Card>

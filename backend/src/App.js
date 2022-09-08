@@ -11,13 +11,13 @@ import EditAdmin from "./Pages/EditAdmin";
 function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AddDoctor />} />
-         
+          <Route path="/adddoctors" element={<AddDoctor />} />
+          <Route path="/viewdoctors" element={<ViewDoctors />} />
+          <Route path="/editdoctors" element={<EditDoctor />} />
         </Routes>
-      </BrowserRouter> */}
-      <EditAdmin />
+      </BrowserRouter>
     </div>
   );
 }

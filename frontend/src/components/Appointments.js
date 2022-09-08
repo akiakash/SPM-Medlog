@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,8 +7,43 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Header from "./Header";
+import axios from "axios";
 
 export default function Appointments() {
+  const [appoinment, setAppointment] = useState([]);
+
+  const getRequest = () => {
+    axios
+      .get(`http://localhost:5000/appointmentmanagement/`)
+      .then((res) => {
+        setAppointment(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRequest();
+  }, [appoinment]);
+
+  function editappointment(_id) {
+    console.log("Appointment" + _id);
+    window.sessionStorage.setItem("appointmentId", _id);
+    window.location("/editappointment");
+  }
+
+  function deleteAppointment(_id) {
+    alert("Are you confirm to delete?");
+    fetch(`http://localhost:5000/appointmentmanagement/${_id}`, {
+      method: "DELETE",
+    }).then((response) => {
+      response.json();
+      alert("Appointment Successfully Deleted...!");
+    });
+  }
+
   return (
     <div>
       <Header />
@@ -63,28 +98,44 @@ export default function Appointments() {
         <Button size="small">Your</Button>{" "}
       </a> */}
       <div>
-        <Card sx={{ maxWidth: 345 }} style={{ marginLeft: "100px" }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <a href="/editappointment">
-              <Button size="small">View</Button>{" "}
-            </a>
-          </CardActions>
-        </Card>
+        {appoinment.map((item) => (
+          <Card
+            // sx={{ maxWidth: 545 }}
+            style={{
+              marginLeft: "100px",
+              display: "inline-block",
+              width: "400px",
+              marginTop: "20px",
+            }}
+          >
+            <CardMedia
+              component="img"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+              alt={item.DoctorName}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {item.PatientName}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                DATE : {item.Date}
+                TIME : {item.time}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <a href="/editappointment">
+                <Button size="small" on d></Button>{" "}
+              </a>
+              <Button
+                style={{ backgroundColor: "#307172", color: "white" }}
+                onClick={() => deleteAppointment(item._id)}
+              >
+                Delete
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
       </div>
     </div>
   );

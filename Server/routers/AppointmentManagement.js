@@ -50,4 +50,26 @@ router.delete("/:appointmentid", async (req, res) => {
   }
 });
 
+router.patch("/:appointmentId", async (req, res) => {
+  try {
+    const updatedAppointment = await Appointment.updateOne(
+      { _id: req.params.appointmentId },
+      {
+        $set: {
+          DoctorName: req.body.DoctorName,
+          PatientName: req.body.PatientName,
+          Age: req.body.Age,
+          Date: req.body.Date,
+          Time: req.body.Time,
+          PhoneNumber: req.body.PhoneNumber,
+          Description: req.body.Description,
+        },
+      }
+    );
+    res.json(updatedAppointment);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 module.exports = router;

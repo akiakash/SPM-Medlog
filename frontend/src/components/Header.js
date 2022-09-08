@@ -27,6 +27,10 @@ const ResponsiveAppBar = () => {
   const about = () => {
     window.location = "/about";
   };
+
+  const addappointments = () => {
+    window.location = "/addappointments";
+  };
   const services = () => {
     window.location = "/services";
   };
@@ -179,6 +183,13 @@ const ResponsiveAppBar = () => {
               style={{ marginRight: "10px" }}
             >
               Appointments
+            </Button>
+            <Button
+              onClick={addappointments}
+              sx={{ my: 2, color: "#307172" }}
+              style={{ marginRight: "10px" }}
+            >
+              Add Appointments
             </Button>
 
             <Button
