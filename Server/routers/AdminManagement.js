@@ -102,4 +102,24 @@ router.post("/login", (req, res, next) => {
     });
 });
 
+router.get("/", async (req, res) => {
+  const user = await User.find();
+  try {
+    res.json(user);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
+router.delete("/:adminid", async (req, res) => {
+  try {
+    const removeUser = await User.remove({
+      _id: req.params.adminid,
+    });
+    res.json(removeUser);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
