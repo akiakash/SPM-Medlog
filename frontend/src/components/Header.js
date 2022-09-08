@@ -192,13 +192,13 @@ const ResponsiveAppBar = () => {
               Add Appointments
             </Button>
 
-            <Button
+            {/* <Button
               onClick={Login}
               sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
               Login
-            </Button>
+            </Button> */}
           </Box>
         </Toolbar>
       </Container>

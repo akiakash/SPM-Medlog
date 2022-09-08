@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,8 +7,25 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Header from "./Header";
+import axios from "axios";
 
 export default function Doctors() {
+  const [doctor, setDoctor] = useState([]);
+  const getRequest = () => {
+    axios
+      .get(`http://localhost:5000/doctormanagement/`)
+      .then((res) => {
+        setDoctor(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRequest();
+  }, [doctor]);
   return (
     <div>
       <Header />
@@ -63,32 +80,44 @@ export default function Doctors() {
         <Button size="small">Your</Button>{" "}
       </a> */}
       <h1>Our Doctors</h1>
+
       <div>
-        <Card
-          sx={{ maxWidth: 345 }}
-          style={{ marginLeft: "100px", paddingTop: "20px" }}
-        >
-          <CardMedia
-            component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <a href="/viewappointment">
-              <Button size="small">View</Button>{" "}
-            </a>
-          </CardActions>
-        </Card>
+        {doctor.map((item) => (
+          <Card
+            style={{
+              marginLeft: "100px",
+              display: "inline-block",
+              width: "400px",
+              marginTop: "20px",
+            }}
+          >
+            <CardMedia
+              component="img"
+              height="140"
+              image="/static/images/cards/contemplative-reptile.jpg"
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {item.DoctorName}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Specialization :{item.Specialization}
+                <br></br>
+                Bio : {item.Bio}
+                <br></br>
+                Age:{item.Age}
+                <br></br>
+                Mobile Number :{item.PhoneNumber}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <a href="/addappointments">
+                <Button size="small">Book a appointment</Button>{" "}
+              </a>
+            </CardActions>
+          </Card>
+        ))}
       </div>
     </div>
   );
