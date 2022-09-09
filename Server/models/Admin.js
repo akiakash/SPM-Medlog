@@ -31,7 +31,6 @@ const PostSchema = mongoose.Schema({
   },
   Image: {
     type: String,
-    required: true,
   },
 });
 

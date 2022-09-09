@@ -12,7 +12,7 @@ function AddAdmin() {
   const [dob, setDob] = useState("");
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState({ myFile: "" });
 
   const CreateUSer = (e) => {
     axios
@@ -22,7 +22,7 @@ function AddAdmin() {
         PhoneNumber: number,
         Age: age,
         Password: password,
-        Image: image,
+        Image: image.myFile,
         Role: role,
         DOB: dob,
       })
@@ -46,6 +46,26 @@ function AddAdmin() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage({ myFile: base64 });
+    console.log(base64);
   };
 
   return (
@@ -111,7 +131,8 @@ function AddAdmin() {
               class="form-control"
               type="file"
               id="formFile"
-              onChange={(e) => setImage(e.target.value)}
+              name="myfile"
+              onChange={(e) => handleFileUpload(e)}
             />
           </div>
           <div class="form-group">

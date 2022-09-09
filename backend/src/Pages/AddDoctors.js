@@ -11,7 +11,7 @@ function AddDoctor() {
   const [dob, setDob] = useState("");
   const [number, setNumber] = useState("");
   const [bio, setBio] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState({ myFile: "" });
 
   function adddoctor() {
     axios
@@ -22,7 +22,7 @@ function AddDoctor() {
         DOB: dob,
         PhoneNumber: number,
         Bio: bio,
-        Image: image,
+        Image: image.myFile,
       })
       .then((res) => {
         alert("successfully added");
@@ -33,6 +33,26 @@ function AddDoctor() {
         console.log(err.data);
       });
   }
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage({ myFile: base64 });
+    console.log(base64);
+  };
 
   return (
     <div>
@@ -97,7 +117,8 @@ function AddDoctor() {
               class="form-control"
               type="file"
               id="formFile"
-              onChange={(e) => setImage(e.target.value)}
+              name="myfile"
+              onChange={(e) => handleFileUpload(e)}
             />
           </div>
           <div class="form-group">

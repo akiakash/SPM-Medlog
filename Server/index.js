@@ -1,13 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+
 const app = express();
 
 const cors = require("cors");
 
 app.use(cors());
 
-app.use(bodyParser.json());
+var bodyParser = require("body-parser");
+
+app.use(
+  bodyParser.urlencoded({
+    limit: "5mb",
+    parameterLimit: 100000,
+    extended: false,
+  })
+);
+
+app.use(
+  bodyParser.json({
+    limit: "5mb",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("We are on Home");

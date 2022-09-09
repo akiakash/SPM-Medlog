@@ -113,8 +113,8 @@ export default function ViewDoctors() {
           >
             <CardMedia
               component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
+              height="300"
+              image={item.Image}
               alt="green iguana"
             />
             <CardContent>
