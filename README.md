@@ -18,9 +18,9 @@ This application mainly has two end users, they are Users/Patients and the Hospi
 This application is very user-friendly and end users can easily do their works without any risks through this system. Patients and Admin have some search facility to do their process very easily also, there are some reports generating functions available for the end-users. So, they can easily download that report as a PDF and maintain the hardcopy references too.   
 
 **Tools & Technologies:**<br>
-  IDE: VS Code <br>
-  Databse: MongoDB <br>
-  Frontend: ReactJS <br>
-  Backend: NodeJS
+  - IDE: VS Code <br>
+  - Databse: MongoDB <br>
+  - Frontend: ReactJS <br>
+  - Backend: NodeJS
 
 
