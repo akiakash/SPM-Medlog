@@ -124,6 +124,8 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Doctor Name</label>
             <input
+              autoFocus
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setName(e.target.value)}
@@ -132,6 +134,7 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Specialization</label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setSpecialization(e.target.value)}
@@ -140,14 +143,17 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
             <input
+              autoComplete="off"
+              type="number"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setAge(e.target.value)}
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Date of birth</label>
+            <label for="exampleFormControlInput1">Date of Birth</label>
             <input
+              type="date" 
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setDob(e.target.value)}
@@ -156,6 +162,7 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number </label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setNumber(e.target.value)}
@@ -164,6 +171,8 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Bio</label>
             <input
+              placeholder="Breif Discription about the Doctor's Service"
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               style={{ height: "100px" }}

@@ -80,7 +80,7 @@ function EditDoctor() {
             <h2
               style={{ color: "white", textAlign: "left", marginLeft: "200px" }}
             >
-              Edit Or Delete Doctor
+              Update Doctor Details
             </h2>
           </div>
           <div className="column">
@@ -106,7 +106,7 @@ function EditDoctor() {
           paddingBottom: "2%",
         }}
       >
-        <h1 style={{ paddingBottom: "5%" }}>Edit DOCTOR - Admin </h1>
+        <h1 style={{ paddingBottom: "5%" }}>EDIT DOCTOR - ADMIN </h1>
 
         <form>
           <div class="mb-3">
@@ -124,6 +124,7 @@ function EditDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Doctor Name</label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setName(e.target.value)}
@@ -133,6 +134,7 @@ function EditDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Specialization</label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setSpecialization(e.target.value)}
@@ -142,6 +144,8 @@ function EditDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
             <input
+              type="number"
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setAge(e.target.value)}
@@ -149,8 +153,9 @@ function EditDoctor() {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Date of birth</label>
+            <label for="exampleFormControlInput1">Date of Birth</label>
             <input
+              type="date"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setDob(e.target.value)}
@@ -160,6 +165,7 @@ function EditDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number </label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setNumber(e.target.value)}
@@ -169,6 +175,7 @@ function EditDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Bio</label>
             <input
+              autoComplete="off"
               class="form-control"
               id="exampleFormControlInput1"
               style={{ height: "100px" }}
