@@ -21,7 +21,7 @@ This application is very user-friendly and end users can easily do their works w
 
 <hr>
 
-** Tools & Technologies:**<br>
+**Tools & Technologies:**<br>
 >MERN Stack
   - IDE: VS Code <br>
   - Databse: MongoDB <br>
