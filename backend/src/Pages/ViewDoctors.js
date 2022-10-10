@@ -73,7 +73,7 @@ export default function ViewDoctors() {
                 marginLeft: "200px",
               }}
             >
-              Medilog
+              Medilog Dcotor Console
             </h2>
           </div>
           <div className="column">
@@ -88,7 +88,7 @@ export default function ViewDoctors() {
           </div>
         </Card>
       </div>
-      ;
+      
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"
@@ -100,7 +100,7 @@ export default function ViewDoctors() {
       {/* <a href="/adddoctor">
         <Button size="small">Your</Button>{" "}
       </a> */}
-      <h1>Our Doctors - Admin </h1>
+      <h1>OUR DOCTORS - ADMIN </h1>
       <div>
         {doctor.map((item) => (
           <Card
@@ -122,8 +122,9 @@ export default function ViewDoctors() {
                 {item.DoctorName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Specialization :{item.Specialization}
-                Bio : {item.Bio}
+                Specialization : {item.Specialization} <br></br>
+                Bio : {item.Bio} <br></br>
+                Mobile : {item.PhoneNumber}
               </Typography>
             </CardContent>
             <CardActions>
