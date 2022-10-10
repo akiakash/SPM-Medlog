@@ -1,5 +1,7 @@
 # MediLog
-**Group No:** SER024
+**Group No:** *SER024* <br>
+
+**Project Name:** *MediLog* (Online Doctor Consultation Application)
 
 **Member Details:**
 | Student ID    | Student Name  |  
@@ -15,12 +17,38 @@ Nowadays the medical industry plays a vital role in this world. Specially In Sri
 
 This application mainly has two end users, they are Users/Patients and the Hospital Admins. Using this application Hospital Admins can easily maintain the administrative staffs and the doctor’s details and the appointments. The patients can easily maintain a profile for their activities, and they can easily check the doctor details and make the booking and payments through this system.
 
-This application is very user-friendly and end users can easily do their works without any risks through this system. Patients and Admin have some search facility to do their process very easily also, there are some reports generating functions available for the end-users. So, they can easily download that report as a PDF and maintain the hardcopy references too.   
+This application is very user-friendly and end users can easily do their works without any risks through this system. Patients and Admin have some search facility to do their process very easily also, there are some reports generating functions available for the end-users. So, they can easily download that report as a PDF and maintain the hardcopy references too.  
 
-**Tools & Technologies:**<br>
+<hr>
+
+** Tools & Technologies:**<br>
+>MERN Stack
   - IDE: VS Code <br>
   - Databse: MongoDB <br>
   - Frontend: ReactJS <br>
-  - Backend: NodeJS
+  - Backend: NodeJS <br>
+ >Other Tolls
+  - SonarQube
+  - Selenium
+  - Azure Boards
+<hr>
+
+
+
+**Pre Requirements:**<br>
+  - VS Code should be installed.
+  - Node has been installed.
+  
+ 
+**Procedure of setting up prerequisites and run the project:**
+ 
+  1. Download a zip folder of this project and unzip or clone the repository.<br>
+  2. Open the project in vs code.<br>
+  3. Open a new terminal.<br>
+  4. Navigate to every folders.<br>
+  5. Type ```npm install``` and click enter from each folder.<br>
+  6. After the node modules getting downloaded, type ```npm start``` and click enter from each folder.<br>
+
+
 
 
