@@ -1,4 +1,5 @@
-# MediLog
+# ![Logo](https://user-images.githubusercontent.com/89700845/194822083-3cf8d3f2-ad8b-4981-8182-df036d527b9b.png)
+
 **Group No:** *SER024* <br>
 
 **Project Name:** *MediLog* (Online Doctor Consultation Application)
