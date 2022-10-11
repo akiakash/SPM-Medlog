@@ -67,11 +67,12 @@ const SignInSide = () => {
 
     axios
       .post("http://localhost:5000/usermanagement/login", {
-        Email: email,
-        Password: password,
+        email: email,
+        password: password,
       })
       .then((res) => {
         console.log(res.data);
+        window.sessionStorage.setItem("userID", res.data.user);
         window.location = "/home";
         alert("Successfuly logged in");
         // this.props.history.push("/aboutus");

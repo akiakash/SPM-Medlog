@@ -111,6 +111,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:adminid", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.adminid);
+    res.json(user);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 router.delete("/:adminid", async (req, res) => {
   try {
     const removeUser = await User.remove({
@@ -119,6 +128,28 @@ router.delete("/:adminid", async (req, res) => {
     res.json(removeUser);
   } catch (err) {
     console.log(err);
+  }
+});
+
+router.patch("/:adminid", async (req, res) => {
+  try {
+    const updatedAdmin = await User.updateOne(
+      { _id: req.params.adminid },
+      {
+        $set: {
+          Email: req.body.Email,
+          Name: req.body.Name,
+          Role: req.body.Role,
+          Age: req.body.Age,
+          DOB: req.body.DOB,
+          PhoneNumber: req.body.PhoneNumber,
+          Image: req.body.Image,
+        },
+      }
+    );
+    res.json(updatedAdmin);
+  } catch (err) {
+    res.json({ message: err });
   }
 });
 

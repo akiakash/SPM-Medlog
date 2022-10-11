@@ -1,9 +1,76 @@
 import { Card } from "@material-ui/core";
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header";
+import axios from "axios";
 
 function EditAdmin() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
+  const [number, setNumber] = useState("");
+
+  const [image, setImage] = useState({ myFile: "" });
+  const [admin, setAdmin] = useState([]);
+  const id = window.sessionStorage.getItem("AdminID");
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/adminmanagement/${id}`)
+      .then((response) => {
+        setEmail(response.data.Email);
+        setName(response.data.Name);
+        setRole(response.data.Role);
+        setAge(response.Age);
+        setDob(response.DOB);
+        setNumber(response.PhoneNumber);
+
+        setAdmin(response.data);
+        console.log(response.data);
+      });
+  }, []);
+
+  function updateAdmin() {
+    axios
+      .patch(`http://localhost:5000/adminmanagement/${id}`, {
+        Name: name,
+        Email: email,
+        PhoneNumber: number,
+        Age: age,
+
+        Image: image.myFile,
+        Role: role,
+        DOB: dob,
+      })
+      .then((response) => {
+        window.location.reload();
+        alert("successfull updated");
+      })
+      .catch((error) => {
+        alert("Sorry, Something Error...");
+      });
+  }
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImage({ myFile: base64 });
+    console.log(base64);
+  };
   return (
     <div>
       <Header />
@@ -56,55 +123,80 @@ function EditAdmin() {
           paddingBottom: "2%",
         }}
       >
-        <h1 style={{ paddingBottom: "5%" }}>ADD ADMIN</h1>
+        <h1 style={{ paddingBottom: "5%" }}>Edit ADMIN</h1>
 
         <form>
           <div class="mb-3">
             <label for="formFile" class="form-label">
               Add Admin Image
             </label>
-            <input class="form-control" type="file" id="formFile" />
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              onChange={(e) => handleFileUpload(e)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Admin Name</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.Name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Email</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.Email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Role</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.Role}
+              onChange={(e) => setRole(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.Age}
+              onChange={(e) => setAge(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Date of Birth</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.DOB}
+              onChange={(e) => setDob(e.target.value)}
+            />
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number</label>
-            <input class="form-control" id="exampleFormControlInput1" />
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Password</label>
-            <input class="form-control" id="exampleFormControlInput1" />
+            <input
+              class="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={admin.PhoneNumber}
+              onChange={(e) => setNumber(e.target.value)}
+            />
           </div>
 
-          <Button style={{ backgroundColor: "#307172", color: "white" }}>
-            Update
-          </Button>
           <Button
-            style={{
-              backgroundColor: "#307172",
-              color: "white",
-              marginLeft: "10px",
-            }}
+            style={{ backgroundColor: "#307172", color: "white" }}
+            onClick={updateAdmin}
           >
-            Delete
+            Update
           </Button>
         </form>
       </Card>

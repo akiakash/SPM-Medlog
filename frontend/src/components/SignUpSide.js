@@ -81,10 +81,10 @@ export default function SignUp() {
     axios
       .post("http://localhost:5000/usermanagement/signup", {
         Name: name,
-        Email: email,
+        email: email,
         PhoneNumber: phone,
         Age: age,
-        Password: password,
+        password: password,
         Image: image,
       })
       .then((res) => {

@@ -12,6 +12,7 @@ import Doctors from "./components/Doctors";
 import SignUp from "./components/SignUpSide";
 import { useLocation } from "react-router-dom";
 import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   const NavBar = () => {
@@ -30,7 +31,7 @@ function App() {
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/home" element={<Home />} />
           <Route path="/addappointments" element={<AddAppointments />} />
-
+          <Route path="/profile" element={<Profile />} />
           {/* <Route path="/viewappointment" element={<ViewAppointment />} /> */}
         </Routes>
       </BrowserRouter>

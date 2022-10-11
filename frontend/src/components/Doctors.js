@@ -11,6 +11,7 @@ import axios from "axios";
 
 export default function Doctors() {
   const [doctor, setDoctor] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const getRequest = () => {
     axios
       .get(`http://localhost:5000/doctormanagement/`)
@@ -74,6 +75,9 @@ export default function Doctors() {
           label="Search"
           multiline
           style={{ width: "300px", marginTop: "20px", paddingBottom: "20px" }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
       </div>
       {/* <a href="/adddoctor">
@@ -82,42 +86,54 @@ export default function Doctors() {
       <h1>Our Doctors</h1>
 
       <div>
-        {doctor.map((item) => (
-          <Card
-            style={{
-              marginLeft: "100px",
-              display: "inline-block",
-              width: "400px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.DoctorName}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Specialization :{item.Specialization}
-                <br></br>
-                Bio : {item.Bio}
-                <br></br>
-                Age:{item.Age}
-                <br></br>
-                Mobile Number :{item.PhoneNumber}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <a href="/addappointments">
-                <Button size="small">Book a appointment</Button>{" "}
-              </a>
-            </CardActions>
-          </Card>
-        ))}
+        {doctor
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.DoctorName.toLocaleLowerCase().includes(
+                searchTerm.toLocaleLowerCase()
+              )
+            ) {
+              return val;
+            }
+          })
+          .map((item) => (
+            <Card
+              style={{
+                marginLeft: "100px",
+                display: "inline-block",
+                width: "400px",
+                marginTop: "20px",
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.DoctorName}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Specialization :{item.Specialization}
+                  <br></br>
+                  Bio : {item.Bio}
+                  <br></br>
+                  Age:{item.Age}
+                  <br></br>
+                  Mobile Number :{item.PhoneNumber}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <a href="/addappointments">
+                  <Button size="small">Book a appointment</Button>{" "}
+                </a>
+              </CardActions>
+            </Card>
+          ))}
       </div>
     </div>
   );

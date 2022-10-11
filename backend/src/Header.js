@@ -46,7 +46,7 @@ const ResponsiveAppBar = () => {
     window.location = "/contactus";
   };
   const appointments = () => {
-    window.location = "/appointments";
+    window.location = "/viewappointments";
   };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -173,14 +173,14 @@ const ResponsiveAppBar = () => {
               sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
-              Add Admin
+              Add Staff
             </Button>
             <Button
               onClick={viewadmins}
               sx={{ my: 2, color: "#307172" }}
               style={{ marginRight: "10px" }}
             >
-              View Admins
+              View Staffs
             </Button>
 
             <Button

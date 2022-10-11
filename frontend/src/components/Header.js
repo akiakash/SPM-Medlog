@@ -44,6 +44,9 @@ const ResponsiveAppBar = () => {
     window.location = "/appointments";
   };
 
+  const profile = () => {
+    window.location = "/profile";
+  };
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -190,6 +193,13 @@ const ResponsiveAppBar = () => {
               style={{ marginRight: "10px" }}
             >
               Add Appointments
+            </Button>
+            <Button
+              onClick={profile}
+              sx={{ my: 2, color: "#307172" }}
+              style={{ marginRight: "10px" }}
+            >
+              Profile
             </Button>
 
             {/* <Button

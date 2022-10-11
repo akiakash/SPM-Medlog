@@ -3,6 +3,8 @@ import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Header from "../Header";
 import axios from "axios";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 function AddAdmin() {
   const [email, setEmail] = useState("");
@@ -151,14 +153,31 @@ function AddAdmin() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div class="form-group">
+
+          <div>
+            <label for="exampleFormControlInput1">Role</label>
+            <FormControl fullWidth>
+              <select
+                id="Role"
+                style={{ borderRadius: "4px", height: "40px" }}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="Finance Manager">-- Select Role --</option>
+                <option value="Finance Manager">Finance Manager</option>
+                <option value="Receptionist">Receptionist</option>
+                <option value="HR">HR</option>
+                <option value="Employee">Employee</option>
+              </select>
+            </FormControl>
+          </div>
+          {/* <div class="form-group">
             <label for="exampleFormControlInput1">Role</label>
             <input
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setRole(e.target.value)}
             />
-          </div>
+          </div> */}
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
             <input

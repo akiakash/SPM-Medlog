@@ -10,6 +10,7 @@ import Header from "../Header";
 import axios from "axios";
 
 export default function ViewAdmins() {
+  const [searchTerm, setSearchTerm] = useState("");
   const [admin, setAdmin] = useState([]);
   const getRequest = () => {
     axios
@@ -35,6 +36,12 @@ export default function ViewAdmins() {
       response.json();
       alert("Doctor Successfully Deleted...!");
     });
+  }
+
+  function editAdmin(_id) {
+    console.log("Admin", _id);
+    window.sessionStorage.setItem("AdminID", _id);
+    window.location("/editadmin");
   }
   return (
     <div>
@@ -89,6 +96,9 @@ export default function ViewAdmins() {
           label="Search"
           multiline
           style={{ width: "300px", marginTop: "20px", paddingBottom: "20px" }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
       </div>
       {/* <a href="/adddoctor">
@@ -96,39 +106,56 @@ export default function ViewAdmins() {
       </a> */}
       <h1> Admins </h1>
       <div>
-        {admin.map((item) => (
-          <Card
-            style={{
-              marginLeft: "100px",
-              display: "inline-block",
-              width: "400px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              height="300"
-              image={item.Image}
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.Name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Role: {item.Role} <br></br>
-                Email:{item.Email}
-                <br></br>
-                Age:{item.Age}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" onClick={() => deleteAdmin(item._id)}>
-                Delete
-              </Button>{" "}
-            </CardActions>
-          </Card>
-        ))}
+        {admin
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.Name.toLocaleLowerCase().includes(
+                searchTerm.toLocaleLowerCase()
+              )
+            ) {
+              return val;
+            }
+          })
+          .map((item) => (
+            <Card
+              style={{
+                marginLeft: "100px",
+                display: "inline-block",
+                width: "400px",
+                marginTop: "20px",
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="300"
+                image={item.Image}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.Name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Role: {item.Role} <br></br>
+                  Email:{item.Email}
+                  <br></br>
+                  Age:{item.Age}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" onClick={() => deleteAdmin(item._id)}>
+                  Delete
+                </Button>{" "}
+                <a href="/editadmin">
+                  <Button size="small" onClick={(e) => editAdmin(item._id)}>
+                    Edit
+                  </Button>{" "}
+                </a>
+              </CardActions>
+            </Card>
+          ))}
       </div>
     </div>
   );

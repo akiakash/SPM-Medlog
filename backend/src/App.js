@@ -8,6 +8,7 @@ import ViewAdmins from "./Pages/ViewAdmin";
 import AddAdmin from "./Pages/AddAdmin";
 import EditAdmin from "./Pages/EditAdmin";
 import SignInSide from "./Pages/SignInSide";
+import Appointments from "./Pages/Appointments";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/addadmin" element={<AddAdmin />} />
           <Route path="/editadmin" element={<EditAdmin />} />
           <Route path="/viewadmin" element={<ViewAdmins />} />
+          <Route path="/viewappointments" element={<Appointments />} />
         </Routes>
       </BrowserRouter>
     </div>
