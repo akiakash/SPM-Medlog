@@ -65,6 +65,8 @@ export default function Doctors() {
                 marginTop: "-150px",
               }
             }
+            alt="femalimage"
+            
             />
           </div>
         </Card>
