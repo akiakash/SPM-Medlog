@@ -10,6 +10,7 @@ import Header from "../Header";
 import axios from "axios";
 
 export default function ViewDoctors() {
+  const [searchTerm, setSearchTerm] = useState("");
   const [doctor, setDoctor] = useState([]);
   const getRequest = () => {
     axios
@@ -95,6 +96,9 @@ export default function ViewDoctors() {
           label="Search"
           multiline
           style={{ width: "300px", marginTop: "20px", paddingBottom: "20px" }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
       </div>
       {/* <a href="/adddoctor">
@@ -102,43 +106,55 @@ export default function ViewDoctors() {
       </a> */}
       <h1>OUR DOCTORS - ADMIN </h1>
       <div>
-        {doctor.map((item) => (
-          <Card
-            style={{
-              marginLeft: "100px",
-              display: "inline-block",
-              width: "400px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              height="300"
-              image={item.Image}
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.DoctorName}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Specialization : {item.Specialization} <br></br>
-                Bio : {item.Bio} <br></br>
-                Mobile : {item.PhoneNumber}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <a href="/editdoctors">
-                <Button size="small" onClick={() => editDoctor(item._id)}>
-                  View
+        {doctor
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.DoctorName.toLocaleLowerCase().includes(
+                searchTerm.toLocaleLowerCase()
+              )
+            ) {
+              return val;
+            }
+          })
+          .map((item) => (
+            <Card
+              style={{
+                marginLeft: "100px",
+                display: "inline-block",
+                width: "400px",
+                marginTop: "20px",
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="300"
+                image={item.Image}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.DoctorName}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Specialization : {item.Specialization} <br></br>
+                  Bio : {item.Bio} <br></br>
+                  Mobile : {item.PhoneNumber}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <a href="/editdoctors">
+                  <Button size="small" onClick={() => editDoctor(item._id)}>
+                    View
+                  </Button>{" "}
+                </a>
+                <Button size="small" onClick={() => deletedoctor(item._id)}>
+                  Delete
                 </Button>{" "}
-              </a>
-              <Button size="small" onClick={() => deletedoctor(item._id)}>
-                Delete
-              </Button>{" "}
-            </CardActions>
-          </Card>
-        ))}
+              </CardActions>
+            </Card>
+          ))}
       </div>
     </div>
   );
