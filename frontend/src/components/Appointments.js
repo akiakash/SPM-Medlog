@@ -70,7 +70,7 @@ export default function Appointments() {
             <h2
               style={{ color: "white", textAlign: "left", marginLeft: "200px" }}
             >
-              Appointments
+              Appointment
             </h2>
           </div>
           <div className="column">
