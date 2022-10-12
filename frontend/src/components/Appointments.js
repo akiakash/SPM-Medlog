@@ -14,7 +14,7 @@ export default function Appointments() {
 
   const getRequest = () => {
     axios
-      .get(`http://localhost:5000/appointmentmanagement/`)
+      .get(`http://localhost:9999/appointmentmanagement/`)
       .then((res) => {
         setAppointment(res.data);
         console.log(res.data);
@@ -36,7 +36,7 @@ export default function Appointments() {
 
   function deleteAppointment(_id) {
     alert("Are you confirm to delete?");
-    fetch(`http://localhost:5000/appointmentmanagement/${_id}`, {
+    fetch(`http://localhost:9999/appointmentmanagement/${_id}`, {
       method: "DELETE",
     }).then((response) => {
       response.json();

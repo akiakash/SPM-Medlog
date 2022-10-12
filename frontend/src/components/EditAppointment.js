@@ -18,7 +18,7 @@ function EditAppointments() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/appointmentmanagement/${id}`)
+      .get(`http://localhost:9999/appointmentmanagement/${id}`)
       .then((response) => {
         //   console.log(response.data);
         setName(response.data.DoctorName);
@@ -36,7 +36,7 @@ function EditAppointments() {
 
   function updateAppointment() {
     axios
-      .patch(`http://localhost:5000/appointmentmanagement/${id}`, {
+      .patch(`http://localhost:9999/appointmentmanagement/${id}`, {
         DoctorName: name,
         PatientName: patientname,
         Age: age,

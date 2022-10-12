@@ -15,7 +15,7 @@ function AddAppointments() {
 
   function register() {
     axios
-      .post("http://localhost:5000/appointmentmanagement/", {
+      .post("http://localhost:9999/appointmentmanagement/", {
         DoctorName: name,
         PatientName: patientname,
         Age: age,

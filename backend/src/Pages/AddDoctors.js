@@ -15,7 +15,7 @@ function AddDoctor() {
 
   function adddoctor() {
     axios
-      .post("http://localhost:5000/doctormanagement/", {
+      .post("http://localhost:9999/doctormanagement/", {
         DoctorName: name,
         Specialization: specialization,
         Age: age,
@@ -153,7 +153,7 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Date of Birth</label>
             <input
-              type="date" 
+              type="date"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setDob(e.target.value)}

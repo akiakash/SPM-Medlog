@@ -14,7 +14,7 @@ export default function ViewAdmins() {
   const [admin, setAdmin] = useState([]);
   const getRequest = () => {
     axios
-      .get(`http://localhost:5000/adminmanagement/`)
+      .get(`http://localhost:9999/adminmanagement/`)
       .then((res) => {
         setAdmin(res.data);
         console.log(res.data);
@@ -30,7 +30,7 @@ export default function ViewAdmins() {
 
   function deleteAdmin(_id) {
     alert("Are you confirm to delete?");
-    fetch(`http://localhost:5000/adminmanagement/${_id}`, {
+    fetch(`http://localhost:9999/adminmanagement/${_id}`, {
       method: "DELETE",
     }).then((response) => {
       response.json();

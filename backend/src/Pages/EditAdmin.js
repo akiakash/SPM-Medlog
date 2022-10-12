@@ -17,7 +17,7 @@ function EditAdmin() {
   const id = window.sessionStorage.getItem("AdminID");
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/adminmanagement/${id}`)
+      .get(`http://localhost:9999/adminmanagement/${id}`)
       .then((response) => {
         setEmail(response.data.Email);
         setName(response.data.Name);
@@ -33,7 +33,7 @@ function EditAdmin() {
 
   function updateAdmin() {
     axios
-      .patch(`http://localhost:5000/adminmanagement/${id}`, {
+      .patch(`http://localhost:9999/adminmanagement/${id}`, {
         Name: name,
         Email: email,
         PhoneNumber: number,

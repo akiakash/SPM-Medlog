@@ -14,7 +14,7 @@ export default function Doctors() {
   const [searchTerm, setSearchTerm] = useState("");
   const getRequest = () => {
     axios
-      .get(`http://localhost:5000/doctormanagement/`)
+      .get(`http://localhost:9999/doctormanagement/`)
       .then((res) => {
         setDoctor(res.data);
         console.log(res.data);

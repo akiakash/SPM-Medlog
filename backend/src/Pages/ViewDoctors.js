@@ -13,7 +13,7 @@ export default function ViewDoctors() {
   const [doctor, setDoctor] = useState([]);
   const getRequest = () => {
     axios
-      .get(`http://localhost:5000/doctormanagement/`)
+      .get(`http://localhost:9999/doctormanagement/`)
       .then((res) => {
         setDoctor(res.data);
         console.log(res.data);
@@ -35,7 +35,7 @@ export default function ViewDoctors() {
 
   function deletedoctor(_id) {
     alert("Are you confirm to delete?");
-    fetch(`http://localhost:5000/doctormanagement/${_id}`, {
+    fetch(`http://localhost:9999/doctormanagement/${_id}`, {
       method: "DELETE",
     }).then((response) => {
       response.json();
@@ -88,7 +88,7 @@ export default function ViewDoctors() {
           </div>
         </Card>
       </div>
-      
+
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"

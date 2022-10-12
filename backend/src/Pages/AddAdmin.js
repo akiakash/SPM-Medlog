@@ -18,7 +18,7 @@ function AddAdmin() {
 
   const CreateUSer = (e) => {
     axios
-      .post("http://localhost:5000/adminmanagement/signup", {
+      .post("http://localhost:9999/adminmanagement/signup", {
         Name: name,
         Email: email,
         PhoneNumber: number,

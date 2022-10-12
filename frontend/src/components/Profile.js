@@ -16,7 +16,7 @@ function Profile() {
   const [age, setAge] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/usermanagement/${id}`).then((response) => {
+    axios.get(`http://localhost:9999/usermanagement/${id}`).then((response) => {
       setName(response.data.Name);
       setEmail(response.data.email);
       setNumber(response.data.PhoneNumber);
@@ -29,7 +29,7 @@ function Profile() {
 
   function updateUsers() {
     axios
-      .patch(`http://localhost:5000/usermanagement/${id}`, {
+      .patch(`http://localhost:9999/usermanagement/${id}`, {
         Name: name,
         email: email,
         PhoneNumber: number,

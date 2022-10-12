@@ -18,7 +18,7 @@ function EditDoctor() {
   const id = window.sessionStorage.getItem("doctorId");
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/doctormanagement/${id}`)
+      .get(`http://localhost:9999/doctormanagement/${id}`)
       .then((response) => {
         //   console.log(response.data);
         setName(response.data.DoctorName);
@@ -36,7 +36,7 @@ function EditDoctor() {
 
   function updateDoctor() {
     axios
-      .patch(`http://localhost:5000/doctormanagement/${id}`, {
+      .patch(`http://localhost:9999/doctormanagement/${id}`, {
         DoctorName: name,
         Specialization: specialization,
         Age: age,

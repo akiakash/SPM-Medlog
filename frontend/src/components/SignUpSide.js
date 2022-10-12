@@ -79,7 +79,7 @@ export default function SignUp() {
   };
   const CreateUSer = (e) => {
     axios
-      .post("http://localhost:5000/usermanagement/signup", {
+      .post("http://localhost:9999/usermanagement/signup", {
         Name: name,
         email: email,
         PhoneNumber: phone,
