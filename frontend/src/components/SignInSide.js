@@ -73,7 +73,7 @@ const SignInSide = () => {
         console.log(res.data);
         window.sessionStorage.setItem("userID", res.data.user);
         window.location = "/home";
-        alert("Successfuly logged in");
+        alert("Successfuly Logged In");
         // this.props.history.push("/aboutus");
         console.log(res.data);
       })
@@ -138,7 +138,7 @@ const SignInSide = () => {
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Forgot Password?
                 </Link>
               </Grid>
               <Grid item>
