@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import axios from "axios";
 
+//this is the code for edit appoinment
+
 function EditAppointments() {
   const [name, setName] = useState("");
   const [patientname, setPatientname] = useState("");
@@ -20,7 +22,6 @@ function EditAppointments() {
     axios
       .get(`http://localhost:9999/appointmentmanagement/${id}`)
       .then((response) => {
-        //   console.log(response.data);
         setName(response.data.DoctorName);
         setPatientname(response.data.PatientName);
         setAge(response.data.Age);
@@ -53,7 +54,6 @@ function EditAppointments() {
         alert("Sorry, Something Error...");
       });
   }
-
   return (
     <div>
       <Header />

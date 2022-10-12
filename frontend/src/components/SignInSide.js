@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 
 const SignInSide = () => {
   const classes = useStyles();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
