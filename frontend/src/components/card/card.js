@@ -273,6 +273,7 @@ const Login = () => {
           src={ASSETS.ICONS.ZM_MODAL.CLOSE_MOBILE}
           onClick={onCloseBtnClicked}
           className="close-btn absolute right-0 cursor-pointer"
+          
         />
 
         <div

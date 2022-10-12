@@ -143,6 +143,21 @@
       position: relative;
       cursor: pointer;
     }
+    .auth-error-message_2 {
+        font-family: Poppins, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 160%;
+        display: flex;
+        text-align: right;
+        font-feature-settings: 'tnum' on, 'lnum' on;
+        color: #ff006e;
+        height: 30px;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+    }
   
     .remember-me label:before {
       content: '';
@@ -264,7 +279,7 @@
         width: 12px;
       }
     }
-  }
+  
   
   .register-back-btn {
     top: 12px;
@@ -298,6 +313,20 @@
     color: #8338ec;
     margin-bottom: 16px;
   }
+  .password-text {
+    text-align: right;
+    margin-right: 18px;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 133%;
+    align-items: center;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+    color: #180b2b;
+    margin-bottom: 16px;
+  }
+  
   
   .close-btn {
     display: none;
@@ -325,6 +354,17 @@
       font-feature-settings: 'tnum' on, 'lnum' on !important;
       margin-top: 13.33px !important;
     }
+    .section-header {
+        font-family: Poppins, sans-serif !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-size: 14px !important;
+        line-height: 160% !important;
+        align-items: center !important;
+        text-align: center !important;
+        font-feature-settings: 'tnum' on, 'lnum' on !important;
+        margin-top: 13.33px !important;
+      }
   
     .login-page-popop .login-button-styles {
       width: 100% !important;
@@ -353,7 +393,7 @@
       align-items: center !important;
       text-align: center !important;
       font-feature-settings: 'tnum' on, 'lnum' on !important;
-      // margin-top: 12.86px !important;
+       margin-top: 12.86px !important;
     }
   
     .email-input,
