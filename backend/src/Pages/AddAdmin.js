@@ -107,6 +107,7 @@ function AddAdmin() {
                 marginLeft: "60%",
                 marginTop: "-150px",
               }}
+              alt="femalimage"
             />
           </div>
         </Card>
@@ -170,14 +171,6 @@ function AddAdmin() {
               </select>
             </FormControl>
           </div>
-          {/* <div class="form-group">
-            <label for="exampleFormControlInput1">Role</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setRole(e.target.value)}
-            />
-          </div> */}
           <div class="form-group">
             <label for="exampleFormControlInput1">Age</label>
             <input

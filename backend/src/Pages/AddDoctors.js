@@ -91,6 +91,7 @@ function AddDoctor() {
                 marginLeft: "60%",
                 marginTop: "-150px",
               }}
+              alt="femalimage"
             />
           </div>
         </Card>
@@ -153,7 +154,7 @@ function AddDoctor() {
           <div class="form-group">
             <label for="exampleFormControlInput1">Date of Birth</label>
             <input
-              type="date" 
+              type="date"
               class="form-control"
               id="exampleFormControlInput1"
               onChange={(e) => setDob(e.target.value)}

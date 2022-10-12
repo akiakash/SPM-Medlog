@@ -74,7 +74,6 @@ const SignInSide = () => {
         window.sessionStorage.setItem("userID", res.data.user);
         window.location = "/home";
         alert("Successfuly Logged In");
-        // this.props.history.push("/aboutus");
         console.log(res.data);
       })
       .catch((error) => {
@@ -156,5 +155,4 @@ const SignInSide = () => {
     </Grid>
   );
 };
-
 export default SignInSide;

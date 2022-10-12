@@ -85,6 +85,7 @@ export default function ViewAdmins() {
                 marginLeft: "60%",
                 marginTop: "-150px",
               }}
+              alt="femalimage"
             />
           </div>
         </Card>
