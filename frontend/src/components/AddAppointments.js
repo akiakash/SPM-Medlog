@@ -114,7 +114,7 @@ function AddAppointments() {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Mobile Number</label>
+            <label for="exampleFormControlInput1">Phone Number</label>
             <input
               class="form-control"
               id="exampleFormControlInput1"
@@ -138,7 +138,7 @@ function AddAppointments() {
             />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Description</label>
+            <label for="exampleFormControlInput1">Details</label>
             <input
               class="form-control"
               id="exampleFormControlInput1"
