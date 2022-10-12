@@ -3,6 +3,7 @@ import Header from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+//this is the class for home
 function Home() {
   return (
     <div>
@@ -13,7 +14,9 @@ function Home() {
             <div>
               <img
                 src="./Home1.png"
-                style={{ height: "500px", width: "300%" }}
+                style={{ height: "500px", width: "300%" }
+              }
+              alt="homeImage"
               ></img>
             </div>
           </Col>
