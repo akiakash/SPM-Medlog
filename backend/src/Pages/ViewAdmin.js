@@ -89,6 +89,9 @@ export default function ViewAdmins() {
           </div>
         </Card>
       </div>
+      <a href="/adminreport">
+        <Button variant="contained">Print Report</Button>
+      </a>
 
       <div className="search">
         <TextField

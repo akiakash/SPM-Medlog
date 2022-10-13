@@ -85,6 +85,9 @@ export default function Appointments() {
           </div>
         </Card>
       </div>
+      <a href="/appointmentreport">
+        <Button variant="contained">Print Report</Button>
+      </a>
 
       <div className="search">
         <TextField

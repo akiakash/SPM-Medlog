@@ -89,6 +89,9 @@ export default function ViewDoctors() {
           </div>
         </Card>
       </div>
+      <a href="/doctorreport">
+        <Button variant="contained">Print Report</Button>
+      </a>
 
       <div className="search">
         <TextField
