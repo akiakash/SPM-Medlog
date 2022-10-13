@@ -27,6 +27,11 @@ export default function Doctors() {
   useEffect(() => {
     getRequest();
   }, [doctor]);
+
+  function addappointment(_id) {
+    console.log("Doctor" + _id);
+    window.sessionStorage.setItem("doctorID", _id);
+  }
   return (
     <div>
       <Header />
@@ -63,10 +68,8 @@ export default function Doctors() {
                 width: "280px",
                 marginLeft: "60%",
                 marginTop: "-150px",
-              }
-            }
-            alt="femalimage"
-            
+              }}
+              alt="femalimage"
             />
           </div>
         </Card>
@@ -132,7 +135,9 @@ export default function Doctors() {
               </CardContent>
               <CardActions>
                 <a href="/addappointments">
-                  <Button size="small">Book a appointment</Button>{" "}
+                  <Button size="small" onClick={() => addappointment(item._id)}>
+                    Book a appointment
+                  </Button>{" "}
                 </a>
               </CardActions>
             </Card>

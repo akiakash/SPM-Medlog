@@ -81,10 +81,7 @@ const ResponsiveAppBar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             <a href="/home">
-              <img src="./Logo.png"  alt="logo">
-                
-              </img>
-
+              <img src="./Logo.png" alt="logo"></img>
             </a>
           </Typography>
 
@@ -187,13 +184,7 @@ const ResponsiveAppBar = () => {
             >
               Appointments
             </Button>
-            <Button
-              onClick={addappointments}
-              sx={{ my: 2, color: "#307172" }}
-              style={{ marginRight: "10px" }}
-            >
-              Add Appointments
-            </Button>
+
             <Button
               onClick={profile}
               sx={{ my: 2, color: "#307172" }}

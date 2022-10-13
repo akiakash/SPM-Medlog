@@ -1,17 +1,42 @@
 import { Card } from "@material-ui/core";
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import axios from "axios";
 
 function AddAppointments() {
   const [name, setName] = useState("");
+
   const [patientname, setPatientname] = useState("");
   const [age, setAge] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [number, setNumber] = useState("");
   const [description, setDescription] = useState("");
+  const [appointment, setAppointment] = useState([]);
+  const id = window.sessionStorage.getItem("doctorID");
+  // const userid = window.sessionStorage.getItem("userID");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9999/doctormanagement/${id}`)
+      .then((response) => {
+        setName(response.data.DoctorName);
+
+        setAppointment(response.data);
+        console.log(response.data);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:9999/usermanagement/${userid}`)
+  //     .then((response) => {
+  //       setPatientname(response.data.Name);
+  //       setAppointment(response.data);
+  //       console.log(response.data);
+  //     });
+  // }, []);
 
   function register() {
     axios
@@ -95,6 +120,7 @@ function AddAppointments() {
             <input
               class="form-control"
               id="exampleFormControlInput1"
+              defaultValue={appointment.DoctorName}
               onChange={(e) => setName(e.target.value)}
             />
           </div>

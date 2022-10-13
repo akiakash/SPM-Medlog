@@ -146,9 +146,8 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                type="number"
                 label="Phone Number"
-                autoComplete="email"
                 onChange={(e) => setPhone(e.target.value)}
               />
             </Grid>
@@ -157,23 +156,20 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
                 label="Age"
-                autoComplete="email"
+                type="number"
                 onChange={(e) => setAge(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
                 label="Image"
-                autoComplete="email"
                 onChange={(e) => setImage(e.target.value)}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
