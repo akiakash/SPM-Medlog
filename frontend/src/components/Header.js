@@ -7,9 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 const pages = ["Home", "Product", "Services", "Contact us", "Logout"];
@@ -83,7 +81,10 @@ const ResponsiveAppBar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             <a href="/home">
-              <img src="./Logo.png"></img>
+              <img src="./Logo.png"  alt="logo">
+                
+              </img>
+
             </a>
           </Typography>
 
@@ -165,7 +166,6 @@ const ResponsiveAppBar = () => {
             >
               Services
             </Button>
-
             <Button
               onClick={doctors}
               sx={{ my: 2, color: "#307172" }}
@@ -201,14 +201,6 @@ const ResponsiveAppBar = () => {
             >
               Profile
             </Button>
-
-            {/* <Button
-              onClick={Login}
-              sx={{ my: 2, color: "#307172" }}
-              style={{ marginRight: "10px" }}
-            >
-              Login
-            </Button> */}
           </Box>
         </Toolbar>
       </Container>

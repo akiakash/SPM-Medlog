@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import axios from "axios";
 
+//this is the
 function Profile() {
   const id = window.sessionStorage.getItem("userID");
   const [user, setUser] = useState([]);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -21,7 +21,6 @@ function Profile() {
       setEmail(response.data.email);
       setNumber(response.data.PhoneNumber);
       setNumber(response.data.Age);
-
       setUser(response.data);
       console.log(response.data);
     });
@@ -82,6 +81,7 @@ function Profile() {
                 marginLeft: "60%",
                 marginTop: "-150px",
               }}
+              alt="femalimage"
             />
           </div>
         </Card>
@@ -136,7 +136,6 @@ function Profile() {
               defaultValue={user.Age}
             />
           </div>
-
           <Button
             style={{
               backgroundColor: "#307172",

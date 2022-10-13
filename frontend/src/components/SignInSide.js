@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 
 const SignInSide = () => {
   const classes = useStyles();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -74,8 +73,7 @@ const SignInSide = () => {
         console.log(res.data);
         window.sessionStorage.setItem("userID", res.data.user);
         window.location = "/home";
-        alert("Successfuly logged in");
-        // this.props.history.push("/aboutus");
+        alert("Successfuly Logged In");
         console.log(res.data);
       })
       .catch((error) => {
@@ -139,7 +137,7 @@ const SignInSide = () => {
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Forgot Password?
                 </Link>
               </Grid>
               <Grid item>
@@ -157,5 +155,4 @@ const SignInSide = () => {
     </Grid>
   );
 };
-
 export default SignInSide;

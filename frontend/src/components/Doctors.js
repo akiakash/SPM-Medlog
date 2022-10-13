@@ -63,7 +63,10 @@ export default function Doctors() {
                 width: "280px",
                 marginLeft: "60%",
                 marginTop: "-150px",
-              }}
+              }
+            }
+            alt="femalimage"
+            
             />
           </div>
         </Card>

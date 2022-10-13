@@ -81,6 +81,7 @@ export default function Appointments() {
                 marginLeft: "60%",
                 marginTop: "-150px",
               }}
+              alt="femalimage"
             />
           </div>
         </Card>
