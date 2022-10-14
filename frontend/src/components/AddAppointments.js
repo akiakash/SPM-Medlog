@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import axios from "axios";
+import Col from "react-bootstrap/esm/Col";
 
 function AddAppointments() {
   const [name, setName] = useState("");
@@ -16,6 +17,16 @@ function AddAppointments() {
   const [appointment, setAppointment] = useState([]);
   const id = window.sessionStorage.getItem("doctorID");
   // const userid = window.sessionStorage.getItem("userID");
+
+  //error
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  let [errors_patientname, seterrors_patientname] = useState("");
+  let [errors_age, seterrors_age] = useState("");
+  let [errors_date, seterrors_date] = useState("");
+  let [errors_time, seterrors_time] = useState("");
+  let [errors_number, seterrors_number] = useState("");
+  let [errors_description, seterrors_description] = useState("");
 
   useEffect(() => {
     axios
@@ -39,23 +50,64 @@ function AddAppointments() {
   // }, []);
 
   function register() {
-    axios
-      .post("http://localhost:9999/appointmentmanagement/", {
-        DoctorName: name,
-        PatientName: patientname,
-        Age: age,
-        Date: date,
-        Time: time,
-        PhoneNumber: number,
-        Description: description,
-      })
-      .then((res) => {
-        alert("successfully added");
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
+    setError(null);
+    setLoading(true);
+
+    let errors = {};
+
+    //Form Validation
+    if (!patientname.trim()) {
+      errors.patientname = "Patient Name field required";
+      seterrors_patientname(errors.patientname);
+    }
+    if (!age.trim()) {
+      errors.age = "Age field required";
+      seterrors_age(errors.age);
+    }
+    if (!date.trim()) {
+      errors.date = "Date field required";
+      seterrors_date(errors.date);
+    }
+    if (!time.trim()) {
+      errors.time = "Time field required";
+      seterrors_time(errors.time);
+    }
+    if (!number.trim()) {
+      errors.number = "Mobile Number field required";
+      seterrors_number(errors.number);
+    }
+    if (!description.trim()) {
+      errors.description = "Description field required";
+      seterrors_description(errors.description);
+    }
+    if (
+      patientname === "" ||
+      age === "" ||
+      date === "" ||
+      time === "" ||
+      number === "" ||
+      description === ""
+    ) {
+      setLoading(false);
+    } else {
+      axios
+        .post("http://localhost:9999/appointmentmanagement/", {
+          DoctorName: name,
+          PatientName: patientname,
+          Age: age,
+          Date: date,
+          Time: time,
+          PhoneNumber: number,
+          Description: description,
+        })
+        .then((res) => {
+          alert("successfully added");
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err.data);
+        });
+    }
   }
   return (
     <div>
@@ -117,6 +169,7 @@ function AddAppointments() {
         <form>
           <div class="form-group">
             <label for="exampleFormControlInput1">Doctor Name</label>
+
             <input
               class="form-control"
               id="exampleFormControlInput1"
@@ -126,52 +179,95 @@ function AddAppointments() {
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Patient Name</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setPatientname(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                onChange={(e) => setPatientname(e.target.value)}
+              ></input>
+              {errors_patientname && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_patientname}
+                </span>
+              )}
+            </Col>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1"> Age</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setAge(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                onChange={(e) => setAge(e.target.value)}
+              />
+              {errors_age && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_age}
+                </span>
+              )}
+            </Col>
           </div>
+
           <div class="form-group">
             <label for="exampleFormControlInput1">Phone Number</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setNumber(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                onChange={(e) => setNumber(e.target.value)}
+              />
+              {errors_number && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_number}
+                </span>
+              )}
+            </Col>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Date</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setDate(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                onChange={(e) => setDate(e.target.value)}
+              />
+              {errors_date && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_date}
+                </span>
+              )}
+            </Col>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1"> Time</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              onChange={(e) => setTime(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                onChange={(e) => setTime(e.target.value)}
+              />
+              {errors_time && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_time}
+                </span>
+              )}
+            </Col>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Details</label>
-            <input
-              class="form-control"
-              id="exampleFormControlInput1"
-              style={{ height: "100px" }}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <Col sm={12}>
+              <input
+                class="form-control"
+                id="exampleFormControlInput1"
+                style={{ height: "100px" }}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {errors_description && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_description}
+                </span>
+              )}
+            </Col>
           </div>
           <Button
             type="button"
