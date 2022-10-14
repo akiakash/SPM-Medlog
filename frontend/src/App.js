@@ -13,6 +13,7 @@ import SignUp from "./components/SignUpSide";
 import { useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import AppointmentReport from "./components/card/AppointmentReport";
 
 function App() {
   const NavBar = () => {
@@ -32,6 +33,10 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/addappointments" element={<AddAppointments />} />
           <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/appointmentreportuser"
+            element={<AppointmentReport />}
+          />
           {/* <Route path="/viewappointment" element={<ViewAppointment />} /> */}
         </Routes>
       </BrowserRouter>

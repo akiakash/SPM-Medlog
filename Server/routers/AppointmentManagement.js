@@ -12,6 +12,7 @@ router.post("/", async (req, res) => {
     Time: req.body.Time,
     PhoneNumber: req.body.PhoneNumber,
     Description: req.body.Description,
+    userid: req.body.userid,
   });
   try {
     const saveAppointment = await appointment.save();
@@ -63,6 +64,7 @@ router.patch("/:appointmentId", async (req, res) => {
           Time: req.body.Time,
           PhoneNumber: req.body.PhoneNumber,
           Description: req.body.Description,
+          userid: req.body.userid,
         },
       }
     );

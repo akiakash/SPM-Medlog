@@ -11,13 +11,20 @@ import axios from "axios";
 
 export default function Appointments() {
   const [appoinment, setAppointment] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const userid = window.sessionStorage.getItem("userID");
+
+  const userID = userid;
 
   const getRequest = () => {
     axios
       .get(`http://localhost:9999/appointmentmanagement/`)
       .then((res) => {
+        // if ((res.data.userid = userID)) {
+        //   setAppointment(res.data);
+        // }
+        // console.log(res.data);
         setAppointment(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -43,6 +50,11 @@ export default function Appointments() {
       alert("Appointment Successfully Deleted...!");
     });
   }
+
+  // const filtered = appoinment.filter((appoinment) => {
+  //   return appoinment.userid === userID;
+  // });
+  // console.log(filtered);
 
   return (
     <div>
@@ -82,11 +94,13 @@ export default function Appointments() {
                 marginTop: "-150px",
               }}
               alt="femalimage"
-              
             />
           </div>
         </Card>
       </div>
+      <a href="/appointmentreportuser">
+        <Button variant="contained">Print Report</Button>
+      </a>
 
       <div className="search">
         <TextField

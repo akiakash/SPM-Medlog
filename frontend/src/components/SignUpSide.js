@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function MadeWithLove() {
   return (
@@ -60,14 +60,36 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [image, setImage] = useState("");
+  const [cPassword, setCPassword] = useState("");
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [cPasswordClass, setCPasswordClass] = useState("form-control");
+  const [isCPasswordDirty, setIsCPasswordDirty] = useState(false);
 
-  // const [post, setPost] = React.useState(null);
+  useEffect(() => {
+    if (isCPasswordDirty) {
+      if (password === cPassword) {
+        setShowErrorMessage(false);
+        setCPasswordClass("form-control is-valid");
+      } else {
+        setShowErrorMessage(true);
+        setCPasswordClass("form-control is-invalid");
+      }
+    }
+  }, [cPassword]);
 
-  // React.useEffect(() => {
-  //   axios.post(`${baseURL}`).then((res) => {
-  //     setPost(res.data);
-  //   });
-  // }, []);
+  const handleCPassword = (e) => {
+    setCPassword(e.target.value);
+    setIsCPasswordDirty(true);
+  };
+
+  //error
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  let [errors_name, seterrors_name] = useState("");
+  let [errors_phone, seterrors_phone] = useState("");
+  let [errors_email, seterrors_email] = useState("");
+  let [errors_age, seterrors_age] = useState("");
+  let [errors_password, seterrors_password] = useState("");
 
   const Clear = () => {
     setName("");
@@ -78,32 +100,67 @@ export default function SignUp() {
     setImage("");
   };
   const CreateUSer = (e) => {
-    axios
-      .post("http://localhost:9999/usermanagement/signup", {
-        Name: name,
-        email: email,
-        PhoneNumber: phone,
-        Age: age,
-        password: password,
-        Image: image,
-      })
-      .then((res) => {
-        console.log(res.data);
-        window.location = "/";
-        e.preventDefault();
-        setName("");
-        setPhone("");
-        setAge("");
-        setPassword("");
-        setImage("");
+    setError(null);
+    setLoading(true);
 
-        alert("Successfully Registered");
+    let errors = {};
 
-        // Window.location.reload(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!name.trim()) {
+      errors.name = " Name field required";
+      seterrors_name(errors.name);
+    }
+    if (!email.trim()) {
+      errors.email = "  Email field required";
+      seterrors_email(errors.email);
+    }
+    if (!phone.trim()) {
+      errors.phone = " Phone Number field required";
+      seterrors_phone(errors.phone);
+    }
+    if (!age.trim()) {
+      errors.age = "  Age field required";
+      seterrors_age(errors.age);
+    }
+    if (!password.trim()) {
+      errors.password = "  Password field required";
+      seterrors_password(errors.password);
+    }
+    if (
+      name === "" ||
+      phone === "" ||
+      email === "" ||
+      age === "" ||
+      password === ""
+    ) {
+      setLoading(false);
+    } else {
+      axios
+        .post("http://localhost:9999/usermanagement/signup", {
+          Name: name,
+          email: email,
+          PhoneNumber: phone,
+          Age: age,
+          password: password,
+          Image: image,
+        })
+        .then((res) => {
+          console.log(res.data);
+          window.location = "/";
+          e.preventDefault();
+          setName("");
+          setPhone("");
+          setAge("");
+          setPassword("");
+          setImage("");
+
+          alert("Successfully Registered");
+
+          // Window.location.reload(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -129,6 +186,11 @@ export default function SignUp() {
                 onChange={(e) => setName(e.target.value)}
                 autoFocus
               />
+              {errors_name && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_name}
+                </span>
+              )}
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -140,6 +202,11 @@ export default function SignUp() {
                 autoComplete="lname"
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {errors_email && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_email}
+                </span>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -150,6 +217,11 @@ export default function SignUp() {
                 label="Phone Number"
                 onChange={(e) => setPhone(e.target.value)}
               />
+              {errors_phone && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_phone}
+                </span>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -160,6 +232,11 @@ export default function SignUp() {
                 type="number"
                 onChange={(e) => setAge(e.target.value)}
               />
+              {errors_age && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_age}
+                </span>
+              )}
             </Grid>
             {/* <Grid item xs={12}>
               <TextField
@@ -177,10 +254,35 @@ export default function SignUp() {
                 fullWidth
                 label="Password"
                 type="password"
+                value={password}
                 id="password"
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {errors_password && (
+                <span style={{ color: "red" }} className="errors">
+                  {errors_password}
+                </span>
+              )}
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                label="Re-enter Password"
+                type="password"
+                autoComplete="current-password"
+                className={cPasswordClass}
+                id="confirmPassword"
+                value={cPassword}
+                onChange={handleCPassword}
+              />
+              {showErrorMessage && isCPasswordDirty ? (
+                <div> Passwords did not match </div>
+              ) : (
+                ""
+              )}
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel

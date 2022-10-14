@@ -44,6 +44,16 @@ function Profile() {
         alert("Sorry, Something Error...");
       });
   }
+
+  // function deleteUser(_id) {
+  //   alert("Are you confirm to delete?");
+  //   fetch(`http://localhost:9999/usermanagement/${_id}`, {
+  //     method: "DELETE",
+  //   }).then((response) => {
+  //     response.json();
+  //     alert("Appointment Successfully Deleted...!");
+  //   });
+  // }
   return (
     <div>
       <Header />
@@ -146,6 +156,16 @@ function Profile() {
           >
             Update
           </Button>
+          {/* <Button
+            style={{
+              backgroundColor: "#307172",
+              color: "white",
+              marginRight: "20px",
+            }}
+            onClick={() => deleteUser(item._id)}
+          >
+            Delete
+          </Button> */}
         </form>
       </Card>
     </div>

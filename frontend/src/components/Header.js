@@ -63,6 +63,12 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+  function logout() {
+    window.localStorage.clear();
+
+    window.location = "/";
+  }
+
   return (
     <AppBar
       elevation={0}
@@ -191,6 +197,14 @@ const ResponsiveAppBar = () => {
               style={{ marginRight: "10px" }}
             >
               Profile
+            </Button>
+
+            <Button
+              onClick={logout}
+              sx={{ my: 2, color: "#307172" }}
+              style={{ marginRight: "10px" }}
+            >
+              Logout
             </Button>
           </Box>
         </Toolbar>

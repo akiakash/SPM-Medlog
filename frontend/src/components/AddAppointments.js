@@ -16,7 +16,9 @@ function AddAppointments() {
   const [description, setDescription] = useState("");
   const [appointment, setAppointment] = useState([]);
   const id = window.sessionStorage.getItem("doctorID");
-  // const userid = window.sessionStorage.getItem("userID");
+  const userid = window.sessionStorage.getItem("userID");
+
+  const userID = userid;
 
   //error
   const [error, setError] = useState(null);
@@ -99,9 +101,11 @@ function AddAppointments() {
           Time: time,
           PhoneNumber: number,
           Description: description,
+          userid: userID,
         })
         .then((res) => {
           alert("successfully added");
+          console.log(res);
           window.location.reload();
         })
         .catch((err) => {
