@@ -108,61 +108,78 @@ export default function Appointments() {
           label="Search"
           multiline
           style={{ width: "300px", marginTop: "20px", paddingBottom: "20px" }}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
       </div>
       {/* <a href="/adddoctor">
         <Button size="small">Your</Button>{" "}
       </a> */}
       <div>
-        {appoinment.map((item) => (
-          <Card
-            // sx={{ maxWidth: 545 }}
-            style={{
-              marginLeft: "100px",
-              display: "inline-block",
-              width: "400px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              height="140"
-              image="./appointment.webp"
-              alt={item.DoctorName}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {item.PatientName}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                DATE : {item.Date}
-                TIME : {item.time}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <a href="/editappointment">
+        {appoinment
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.PatientName.toLocaleLowerCase().includes(
+                searchTerm.toLocaleLowerCase()
+              )
+            ) {
+              return val;
+            }
+          })
+          .map((item) => (
+            <Card
+              // sx={{ maxWidth: 545 }}
+              style={{
+                marginLeft: "100px",
+                display: "inline-block",
+                width: "400px",
+                marginTop: "20px",
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="140"
+                image="./appointment.webp"
+                alt={item.DoctorName}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Patient Name - {item.PatientName}
+                  <br></br>
+                  Doctor Name -{item.DoctorName}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  DATE : {item.Date}
+                  TIME : {item.time}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <a href="/editappointment">
+                  <Button
+                    size="small"
+                    onClick={() => editappointment(item._id)}
+                    style={{
+                      backgroundColor: "#307172",
+                      color: "white",
+                      marginRight: "5px",
+                      height: "36px",
+                    }}
+                  >
+                    Edit
+                  </Button>{" "}
+                </a>
                 <Button
-                  size="small"
-                  onClick={() => editappointment(item._id)}
-                  style={{
-                    backgroundColor: "#307172",
-                    color: "white",
-                    marginRight: "5px",
-                    height: "36px",
-                  }}
+                  style={{ backgroundColor: "#307172", color: "white" }}
+                  onClick={() => deleteAppointment(item._id)}
                 >
-                  Edit
-                </Button>{" "}
-              </a>
-              <Button
-                style={{ backgroundColor: "#307172", color: "white" }}
-                onClick={() => deleteAppointment(item._id)}
-              >
-                Delete
-              </Button>
-            </CardActions>
-          </Card>
-        ))}
+                  Delete
+                </Button>
+              </CardActions>
+            </Card>
+          ))}
       </div>
     </div>
   );
