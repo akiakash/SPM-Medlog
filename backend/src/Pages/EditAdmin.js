@@ -38,7 +38,6 @@ function EditAdmin() {
         Email: email,
         PhoneNumber: number,
         Age: age,
-
         Image: image.myFile,
         Role: role,
         DOB: dob,

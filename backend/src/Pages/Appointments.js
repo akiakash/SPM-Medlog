@@ -115,7 +115,7 @@ export default function Appointments() {
             <CardMedia
               component="img"
               height="140"
-              // image="/static/images/cards/contemplative-reptile.jpg"
+              image="/appointment.webp"
               alt={item.DoctorName}
             />
             <CardContent>
