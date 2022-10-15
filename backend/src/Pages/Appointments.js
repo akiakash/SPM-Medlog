@@ -144,7 +144,7 @@ export default function Appointments() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <a href="/editappointment">
+                {/* <a href="/editappointment">
                   <Button
                     size="small"
                     onClick={() => editappointment(item._id)}
@@ -157,7 +157,7 @@ export default function Appointments() {
                   >
                     Edit
                   </Button>{" "}
-                </a>
+                </a> */}
                 <Button
                   style={{ backgroundColor: "#307172", color: "white" }}
                   onClick={() => deleteAppointment(item._id)}
