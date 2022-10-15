@@ -116,7 +116,7 @@ export default function Doctors() {
               <CardMedia
                 component="img"
                 height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
+                image={item.Image}
                 alt="green iguana"
               />
               <CardContent>

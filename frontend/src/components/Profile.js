@@ -20,7 +20,7 @@ function Profile() {
       setName(response.data.Name);
       setEmail(response.data.email);
       setNumber(response.data.PhoneNumber);
-      setNumber(response.data.Age);
+      setAge(response.data.Age);
       setUser(response.data);
       console.log(response.data);
     });
