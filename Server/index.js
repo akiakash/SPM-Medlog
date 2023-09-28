@@ -38,7 +38,7 @@ app.use("/usermanagement", UserManagement);
 app.use("/adminmanagement", AdminManagement);
 
 mongoose.connect(
-  "mongodb+srv://akash:Akiakash1@cluster0.goear.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "mongodb+srv://akash:Akiakash1@cluster0.bfppbit.mongodb.net/",
   () => console.log("Successfully connected ")
 );
 
